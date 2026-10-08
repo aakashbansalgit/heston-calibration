@@ -1,0 +1,15 @@
+{
+  "snapshot": "2026-10-07T14:48-04:00",
+  "spot": 7803.91015625,
+  "quotes": 1434,
+  "expiries": 7,
+  "v0": 0.0091,
+  "kappa": 8.4562,
+  "theta": 0.0403,
+  "eta": 1.8332,
+  "rho": -0.6322,
+  "feller_ratio": 0.203,
+  "rmse_vol_pts": 0.615,
+  "inside_bid_ask": 0.037,
+  "fit_seconds": 7.4
+}
