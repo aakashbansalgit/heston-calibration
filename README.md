@@ -1,5 +1,10 @@
 # heston-calibration
 
+[![tests](https://github.com/aakashbansalgit/heston-calibration/actions/workflows/tests.yml/badge.svg)](https://github.com/aakashbansalgit/heston-calibration/actions/workflows/tests.yml)
+
+A Heston pricer checked five independent ways, calibrated to 1,434 live SPX option quotes in about 7 seconds with an RMSE of 0.62 vol points.
+
+![](figures/smiles_2026-10-07.png)
 A Heston stochastic volatility pricer, tested against independent methods, and a calibration to a live SPX option chain.
 
 ## The pricer
