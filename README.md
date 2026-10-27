@@ -9,7 +9,7 @@ A Heston stochastic volatility pricer, tested against independent methods, and a
 
 ## The pricer
 
-`heston.py` prices European options with the Lewis single-integral formula, which only needs the characteristic function of the log price and decays like 1/u² even at short maturities, so a fixed 400-node Gauss-Legendre grid is enough. The characteristic function uses the "little Heston trap" form of Albrecher et al. (2007), which stays on the principal branch of the complex logarithm. The first version of this code used the textbook form and had to flip the sign of d by hand to stop it jumping branches. Everything is written on the forward and the discount factor, so no rate or dividend assumption is built in.
+`heston.py` prices European options with the Lewis single-integral formula, which only needs the characteristic function of the log price and decays like 1/u² even at short maturities, so a fixed 400-node Gauss-Legendre grid is enough. The characteristic function uses the "little Heston trap" form of Albrecher et al. (2007), which stays on the principal branch of the complex logarithm. Everything is written on the forward and the discount factor, so no rate or dividend assumption is built in.
 
 `tests/test_heston.py` checks it five ways:
 
