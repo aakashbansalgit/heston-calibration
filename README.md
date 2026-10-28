@@ -53,6 +53,19 @@ Beyond three months the fit is within half a vol point. The short end is where H
 
 I also score the fit the way I would score any model against market quotes: the share of strikes where the model's implied vol lands inside the bid-ask. SPX is liquid enough that the median quote is only 0.05 vol points wide, so with 0.6 points of error Heston lands inside on about 4% of strikes. RMSE says the fit is reasonable; the bid-ask test says a trader could not quote off it. Rough volatility or a jump component is the usual next step.
 
+## Weekly refits
+
+`track.py` takes a new snapshot once a week during market hours, refits, and adds a row to `results/history.csv`. The question is how stable the parameters are. Heston can trade kappa against eta to bend the short end, so a fit that matches the surface well every week can still move its parameters a lot from one week to the next. `figures/parameter_history.png` plots each parameter over time and `figures/smiles_latest.png` shows the latest fit.
+
+<!-- history:start -->
+| Date | SPX | v0 | kappa | theta | eta | rho | RMSE | Inside bid-ask |
+|---|---|---|---|---|---|---|---|---|
+| 2026-10-28 | 7,731 | 0.0206 | 8.02 | 0.0424 | 1.94 | -0.67 | 0.53 | 6% |
+| 2026-10-07 | 7,804 | 0.0091 | 8.46 | 0.0403 | 1.83 | -0.63 | 0.61 | 4% |
+
+2 weekly fits since 2026-10-07. The full series is in `results/history.csv`.
+<!-- history:end -->
+
 ## Running it
 
 ```
@@ -60,4 +73,5 @@ pip install numpy scipy pandas matplotlib yfinance
 python -m pytest tests          # or: python tests/test_heston.py
 python calibrate_spx.py         # refit the saved snapshot
 python calibrate_spx.py --download   # take a new snapshot first
+python track.py                 # new snapshot, refit, add to the history
 ```
