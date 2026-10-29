@@ -35,7 +35,15 @@ README = ROOT / "README.md"
 START, END = "<!-- history:start -->", "<!-- history:end -->"
 
 
+def market_open_today():
+    import yfinance as yf
+    last = yf.Ticker("^SPX").history(period="5d").index[-1].date()
+    return last == datetime.now(c.NY).date()
+
+
 def fit_snapshot():
+    if not market_open_today():
+        sys.exit("no SPX session today, not recording")
     path = c.download_snapshot()
     q = c.prepare(pd.read_csv(path))
     if len(q) < MIN_QUOTES:
